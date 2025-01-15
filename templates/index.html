@@ -15,12 +15,16 @@
         <td>{{ book.id }}</td>
         <td>{{ book.title }}</td>
         <td>{{ book.author }}</td>
-        <td>{{ book.status }}</td>
+        <td>
+            <span class="status-badge {% if book.status == 'available' %}available{% else %}borrowed{% endif %}">
+                {{ book.status }}
+            </span>
+        </td>
         <td>
             {% if book.status == 'available' %}
-            <a href="/borrow/{{ book.id }}">Borrow</a>
+            <a href="/borrow/{{ book.id }}" class="btn">Borrow</a>
             {% else %}
-            <a href="/return/{{ book.id }}">Return</a>
+            <a href="/return/{{ book.id }}" class="btn">Return</a>
             {% endif %}
         </td>
     </tr>
